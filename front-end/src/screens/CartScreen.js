@@ -16,10 +16,11 @@ import { Link } from "react-router-dom";
 import Message from "../components/Message";
 const CartScreen = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  
   const cart = useSelector((state) => state.cart);
   const { cartItems } = cart;
   console.log(cartItems);
-  const navigate = useNavigate();
   let { id } = useParams();
 
   const productId = id;
@@ -44,7 +45,7 @@ const CartScreen = () => {
         <h1>Shopping Cart</h1>
         {cartItems.length === 0 ? (
           <Message>
-            Your Add is empty <Link to="/">Go Back</Link>
+            Your Cart is empty <Link to="/">Go Back</Link>
           </Message>
         ) : (
           <ListGroup variant="flush">

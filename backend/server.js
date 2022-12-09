@@ -6,21 +6,24 @@ import { notFound,errorHandler } from "./middleware/errorMiddleware.js";
 import colors from "colors"
 import productRoute from "./routes/productRoute.js"
 import userRoute from "./routes/userRoute.js"
+import orderRoute from "./routes/orderRoute.js"
+import cors from "cors"
 dotenv.config()
 connectDB()
 const app = express()
-
+app.use(cors())
 
 app.use(express.json())
 
 
 app.get('/', (req, res)=>{
-console.log("data send by ===>",req.query.name);
+// console.log("data send by ===>",req.query.name);
 res.send("Api is Running.....")
 })
 
 app.use("/api/products",productRoute)
 app.use("/api/users",userRoute)
+app.use("/api/orders",orderRoute)
 
 app.use(notFound)
 

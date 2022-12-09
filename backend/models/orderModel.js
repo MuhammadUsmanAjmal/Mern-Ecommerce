@@ -14,21 +14,21 @@ const orderSchema = mongoose.Schema(
           required: true,
         },
         qty: {
-          type: String,
+          type: Number,
           required: true,
         },
-        img: {
+        image: {
           type: String,
           required: true,
         },
         price: {
-          type: String,
+          type: Number,
           required: true,
         },
         product: {
           type: mongoose.Schema.Types.ObjectId,
           required: true,
-          ref: "Product",
+          ref: 'Product',
         },
       },
     ],

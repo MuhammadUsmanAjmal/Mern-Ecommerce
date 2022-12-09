@@ -16,6 +16,11 @@ password:bcrypt.hashSync("123456",10),
 name:"Jan Doe",
 email:"jan@example.com",
 password:bcrypt.hashSync("123456",10),
+    },
+    {
+    name:"Usman Ajmal",
+email:"usman@example.com",
+password:bcrypt.hashSync("123456",10),
     }
 ]
 

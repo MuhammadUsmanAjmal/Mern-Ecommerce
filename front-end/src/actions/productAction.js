@@ -26,7 +26,6 @@ dispatch({
 export const listProductDetails =(id) => async  (dispatch) => {
 
     try {
-        
     dispatch({
         type:PRODUCT_DETAIL_REQUEST
     })

@@ -23,12 +23,12 @@ const Header = () => {
       >
         <Container>
           <LinkContainer to="/">
-            <Navbar.Brand>PROSHOP</Navbar.Brand>
+            <Navbar.Brand>USMAN PROSHOP</Navbar.Brand>
           </LinkContainer>
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ml-auto">
-              <LinkContainer to="/cart">
+              <LinkContainer to="/cart/:id">
                 <Nav.Link>
                   <i className="fas fa-shopping-cart"></i> CART
                 </Nav.Link>
