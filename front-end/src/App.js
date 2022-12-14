@@ -13,6 +13,7 @@ import ProfileScreen from "./screens/ProfileScreen";
 import ShippingScreen from "./screens/ShippingScreen";
 import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
+import OrderScreen from "./screens/OrderScreen";
 function App() {
   return (
     <>
@@ -21,7 +22,8 @@ function App() {
         <main className="py-3">
           <Container>
             <Routes>
-              <Route exact path="/shipping" element={<Navigate replace to="/login" /> ? <ShippingScreen/> : ""}/>
+              <Route exact path="/order/:id" element={<OrderScreen/>}/>
+              <Route exact path="/shipping" element={<ShippingScreen/>}/>
               <Route exact path="/payment" element={<PaymentScreen/>}/>
               <Route exact path="/placeorder" element={<PlaceOrderScreen/>}/>
               <Route exact path="/login" element={<LoginScreen/>}/>
