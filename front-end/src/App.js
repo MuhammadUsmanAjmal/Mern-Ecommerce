@@ -4,7 +4,6 @@ import {
   BrowserRouter as Router,
   Route,
   Routes,
-  Navigate,
 } from "react-router-dom";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -20,6 +19,11 @@ import PaymentScreen from "./screens/PaymentScreen";
 import PlaceOrderScreen from "./screens/PlaceOrderScreen";
 import OrderScreen from "./screens/OrderScreen";
 import UserListScreen from "./screens/UserListScreen";
+import UserEditScreen from "./screens/UserEditScreen";
+import ProductListScreen from "./screens/ProductListScreen";
+import ProductEditScreen from "./screens/ProductEditScreen";
+import OrderListScreen from "./screens/OrderListScreen";
+
 function App() {
   return (
     <>
@@ -41,6 +45,26 @@ function App() {
                 exact
                 path="/admin/userlist"
                 element={<UserListScreen />}
+              />
+              <Route
+                exact
+                path="/admin/user/:id/edit"
+                element={<UserEditScreen />}
+              />
+              <Route
+                exact
+                path="/admin/productlist"
+                element={<ProductListScreen />}
+              />
+                <Route
+                exact
+                path="/admin/product/:id/edit"
+                element={<ProductEditScreen />}
+              />
+                <Route
+                exact
+                path="/admin/orderlist"
+                element={<OrderListScreen />}
               />
               <Route exact path="/" element={<HomeScreen />} />
             </Routes>
