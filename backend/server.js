@@ -5,6 +5,7 @@ import connectDB from "./config/db.js";
 // import products from "./data/products.js"
 import { notFound, errorHandler } from "./middleware/errorMiddleware.js";
 import colors from "colors";
+import morgan from "morgan";
 import productRoute from "./routes/productRoute.js";
 import userRoute from "./routes/userRoute.js";
 import orderRoute from "./routes/orderRoute.js";
@@ -13,6 +14,11 @@ import cors from "cors";
 dotenv.config();
 connectDB();
 const app = express();
+
+if (process.env.NODE_ENV === "development") {
+  app.use(morgan("dev"));
+}
+
 app.use(cors());
 
 app.use(express.json());
@@ -30,9 +36,8 @@ app.use("/api/upload", uploadRoute);
 app.get("/api/config/paypal", (req, res) =>
   res.send(process.env.PAYPAL_CLIENT_ID)
 );
-const __dirname = path.resolve()
-app.use('/uploads', express.static(path.join(__dirname, '/uploads')))
-
+const __dirname = path.resolve();
+app.use("/uploads", express.static(path.join(__dirname, "/uploads")));
 
 app.use(notFound);
 

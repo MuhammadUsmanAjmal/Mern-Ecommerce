@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import Message from "../components/Message";
@@ -15,16 +15,16 @@ const LoginScreen = () => {
   const { loading, error, userInfo } = userLogin;
   console.log({ userLogin });
   const dispatch = useDispatch();
+  const location = useLocation();
   const navigate = useNavigate();
-  // let location = useLocation;
-  
-  const redirect = location?.search ? location?.search?.split('=')[1] : '/'
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
 
   useEffect(() => {
     if (userInfo) {
-  navigate(redirect)
+      navigate(redirect);
     }
-  }, [userInfo, navigate]);
+  }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -66,7 +66,7 @@ const LoginScreen = () => {
         <Col>
           New Customer?{" "}
           <Link
-            to={navigate ? `/register?redirect=${navigate}` : "/register"}
+            to={redirect ? `/register?redirect=${redirect}` : "/register"}
             style={{ color: "black" }}
           >
             Register

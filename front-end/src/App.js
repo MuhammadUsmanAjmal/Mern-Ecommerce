@@ -56,6 +56,11 @@ function App() {
                 path="/admin/productlist"
                 element={<ProductListScreen />}
               />
+              <Route
+                exact
+                path="/admin/productlist/:pageNumber"
+                element={<ProductListScreen />}
+              />
                 <Route
                 exact
                 path="/admin/product/:id/edit"
@@ -66,6 +71,9 @@ function App() {
                 path="/admin/orderlist"
                 element={<OrderListScreen />}
               />
+              <Route exact path="/search/:keyword" element={<HomeScreen />} />
+              <Route exact path="/page/:pageNumber" element={<HomeScreen />} />
+              <Route exact path="/search/:keyword/page/:pageNumber" element={<HomeScreen />} />
               <Route exact path="/" element={<HomeScreen />} />
             </Routes>
           </Container>

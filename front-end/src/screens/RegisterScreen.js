@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import { useSelector, useDispatch } from "react-redux";
 import Message from "../components/Message";
@@ -8,6 +8,7 @@ import FormContainer from "../components/FormContainer";
 import { register } from "../actions/userAction";
 
 const RegisterScreen = () => {
+  const dispatch = useDispatch();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -17,16 +18,15 @@ const RegisterScreen = () => {
   const userRegister = useSelector((state) => state.userRegister);
   const { loading, error, userInfo } = userRegister;
 
-  const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const location = useLocation();
   const redirect = location.search ? location.search.split("=")[1] : "/";
-
+  console.log("location.search", location);
   useEffect(() => {
     if (userInfo) {
       navigate(redirect);
     }
-  }, [redirect, userInfo, navigate]);
+  }, [navigate, userInfo, redirect]);
 
   const submitHandler = (e) => {
     e.preventDefault();
@@ -91,7 +91,8 @@ const RegisterScreen = () => {
 
       <Row className="py-3">
         <Col>
-          Have an Account? <Link
+          Have an Account?{" "}
+          <Link
             to={redirect ? `/login?redirect=${redirect}` : "/login"}
             style={{ color: "black" }}
           >
